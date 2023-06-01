@@ -1,0 +1,354 @@
+@charset 'UTF-8';
+
+/*
+	Theme Name: document.jp
+	Theme URL: https://www.document.jp/
+	Description: document.jpオリジナルテーマ
+	Author: Yu
+	Version: 1.0
+*/
+
+body {
+  background-color: black;
+  font-family: dotgothic16, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.main-container {
+  margin: 0 auto; 
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem 1rem;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "profile-img"
+    "text-area";
+  justify-content: center;
+  align-items: center;
+  max-width: 20rem;
+  max-height: 22rem;
+}
+
+.profile-img {
+  grid-area: profile-img;
+  margin: 0 auto; /* 左右中央揃えにする */
+  max-width: 100%;
+  position: relative;
+  width: calc(100% - 1rem);
+
+}
+
+.text-area {
+  margin: 0 auto;
+  height: 6rem;
+  max-width: 24rem;
+  border: 1px solid white;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+
+  grid-area: text-area;
+  padding: 1rem;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 一番下に寄せる */
+  
+}
+
+.text-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.text-area.open::before {
+  background-color: black
+}
+
+.text-area.open {
+  height: auto;
+  overflow: visible;
+
+}
+
+.message {
+  margin: 0;
+  align-self: flex-start; /* 左寄せにする */
+}
+
+.text-area > .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.7rem;
+  justify-items: center;
+  align-items: center;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "battle profile"
+    "info products";
+}
+
+.battle {
+  grid-area: battle;
+}
+
+.info {
+  grid-area: info;
+}
+
+.profile {
+  grid-area: profile;
+}
+
+.products {
+  grid-area: products;
+}
+
+.container a {
+  color: white;
+  text-decoration: none;
+}
+
+.typing1 {
+  font-size: 1rem;
+  white-space: pre-wrap;
+  overflow: hidden;
+  animation: typing 6s steps(40, end), blink .75s step-end infinite;
+  color: white;
+}
+
+.text-area > .battle-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "attack-btn escape-btn";
+}
+
+.attack-btn {
+  grid-area: attack-btn;
+  margin: auto;
+}
+
+.escape-btn {
+  grid-area: escape-btn;
+  margin: auto;
+}
+
+
+@keyframes typing {
+  from {
+    width: 10;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #000;
+  }
+}
+
+footer {
+  margin-top: 2rem;
+  background-color: rgba(0, 0, 0, 0.86);
+  height: 50px;
+
+}
+
+.back-btn {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+  width: 4rem;
+  height: 2rem;
+  background-color: rgb(82, 81, 81);
+  border-radius: 5px;
+  padding: 0.2rem 0.4rem;
+  box-shadow: 0 0.5px 0 #369ada;
+  color: white; /* テキストの色を白にする */
+  font-size: 1rem; /* テキストのフォントサイズを変更する */
+  font-weight: bold; /* テキストを太字にする */
+  border: 1px solid white; /* 枠線を追加する */
+  transition: box-shadow 0.2s ease-in-out; /* マウスオーバー時に影を追加する */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; /* 内部の要素を横方向に並べる */
+  cursor: pointer;
+  margin: 1rem;
+}
+
+/* バトルエフェクト */
+.btn, .attack-btn, .escape-btn  {
+  background-color: rgb(82, 81, 81);
+  border-radius: 5px;
+  padding: 0.2rem 0.4rem;
+  box-shadow: 0 0.5px 0 #369ada;
+  color: white; /* テキストの色を白にする */
+  font-size: 1rem; /* テキストのフォントサイズを変更する */
+  font-weight: bold; /* テキストを太字にする */
+  border: 1px solid white; /* 枠線を追加する */
+  transition: box-shadow 0.2s ease-in-out; /* マウスオーバー時に影を追加する */
+}
+
+.btn:hover, .attack-btn:hover, .escape-btn:hover {
+  box-shadow: 0 1px 3px #369ada; /* マウスオーバー時の影の設定 */
+}
+
+.rounded-btn {
+  border-radius: 15px; /* 角を丸めた四角形のボタン */
+}
+
+.oval-btn {
+  border-radius: 100px; /* 楕円形のボタン */
+}
+
+.light-btn {
+  background-color: rgb(128, 128, 128); /* 色を変更する */
+}
+.effect-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+.effect {
+  width: 200px;
+  height: 200px;
+  animation: damageEffect 0.5s linear;
+  pointer-events: none;
+}
+
+@keyframes damageEffect {
+  0% {
+    transform: scale(0);
+    opacity: 100;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+#content {
+  color: white;
+  max-width: 767px;
+  margin:0 auto;
+}
+
+article {
+  border: 1px solid #fff;
+  padding: 10px;
+}
+
+#footer {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 768px以上の場合 */
+@media screen and (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+  .menu-content {
+    display: block !important;
+  }
+}
+
+/* 768px未満の場合に表示するハンバーガーメニュー */
+@media (max-width: 767px) {
+  .menu-content {
+    display: none;
+  }
+
+  .hamburger-menu .menu-btn {
+    display: block;
+  }
+
+  .hamburger-menu input[type="checkbox"] {
+    display: none;
+  }
+
+  .hamburger-menu input[type="checkbox"]:checked + .menu-content {
+    display: block;
+  }
+}
+
+  /* ハンバーガーアイコンのスタイル */
+  .menu-btn span {
+    display: block;
+    height: 2px;
+    margin-bottom: 4px;
+    position: relative;
+    width: 24px;
+    background: #000;
+  }
+
+  .menu-btn span:before,
+  .menu-btn span:after {
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background: #000;
+  }
+
+  .menu-btn span:before {
+    top: -8px;
+  }
+
+  .menu-btn span:after {
+    bottom: -8px;
+  }
+
+  #menu-btn-check {
+    display: none;
+  }
+
+  /* チェックボックスのスタイル */
+  #menu-btn-check:checked ~ .menu-content {
+    display: block;
+  }
+
+
+  .fadeout {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0;
+    animation: fadeout 2s forwards;
+  }
+  
+  @keyframes fadeout {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
